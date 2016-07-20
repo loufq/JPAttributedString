@@ -23,6 +23,10 @@
 }
 
 - (NSAttributedString *)jp_appendString:(NSString *)string attributesBlock:(void(^)(JPStringAttribute *make))block {
+    if (!string) {
+        return nil;
+    }
+    
     NSMutableAttributedString *retString = [[NSMutableAttributedString alloc] initWithAttributedString:self.attributedText];
     JPStringAttribute *stringAttribute = [[JPStringAttribute alloc] init];
     if (block) {
