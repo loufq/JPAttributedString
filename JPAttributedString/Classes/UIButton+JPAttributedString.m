@@ -13,6 +13,9 @@
 @implementation UIButton (JPAttributedString)
 
 - (NSAttributedString *)jp_appendString:(NSString *)string attributes:(JPStringAttribute *)attributes {
+    if (!string) {
+        return nil;
+    }
     NSMutableAttributedString *retString = [[NSMutableAttributedString alloc] initWithAttributedString:self.titleLabel.attributedText];
     
     [retString appendAttributedString:[[NSAttributedString alloc] initWithString:string
@@ -24,6 +27,9 @@
 }
 
 - (NSAttributedString *)jp_appendString:(NSString *)string attributesBlock:(void(^)(JPStringAttribute *make))block {
+    if (!string) {
+        return nil;
+    }
     NSMutableAttributedString *retString = [[NSMutableAttributedString alloc] initWithAttributedString:self.titleLabel.attributedText];
     JPStringAttribute *stringAttribute = [[JPStringAttribute alloc] init];
     if (block) {

@@ -13,6 +13,9 @@
 @implementation UILabel (JPAttributedString)
 
 - (NSAttributedString *)jp_appendString:(NSString *)string attributes:(JPStringAttribute *)attributes {
+    if (!string) {
+        return nil;
+    }
     NSMutableAttributedString *retString = [[NSMutableAttributedString alloc] initWithAttributedString:self.attributedText];
 
     [retString appendAttributedString:[[NSAttributedString alloc] initWithString:string attributes:[attributes attributedDictionary]]];
